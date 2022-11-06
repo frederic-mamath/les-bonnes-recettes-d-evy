@@ -6,10 +6,11 @@ const Home = () => {
   const recipes = Object.values(MOCKED_RECIPES);
 
   return (
-    <Stack>
+    <Stack direction="row" gap={4} p={4}>
       {recipes.map((recipe) => (
         <RecipeCard
           key={recipe.id}
+          recipeId={recipe.id}
           category={recipe.category}
           name={recipe.name}
           pictureUrl={recipe.pictureUrl}
