@@ -7,4 +7,5 @@ export interface Recipe {
   cookingDurationInMillis: number;
   restDurationInMillis: number;
   preparationDurationInMillis: number;
+  pictureUrl: string;
 }

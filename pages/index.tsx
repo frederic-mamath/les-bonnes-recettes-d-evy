@@ -1,4 +1,5 @@
 import { Stack } from "@mui/system";
+import RecipeCard from "components/RecipeCard";
 import { MOCKED_RECIPES } from "mocks/recipes";
 
 const Home = () => {
@@ -7,10 +8,12 @@ const Home = () => {
   return (
     <Stack>
       {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <div>{recipe.name}</div>
-          <div>{recipe.category}</div>
-        </div>
+        <RecipeCard
+          key={recipe.id}
+          category={recipe.category}
+          name={recipe.name}
+          pictureUrl={recipe.pictureUrl}
+        />
       ))}
     </Stack>
   );
