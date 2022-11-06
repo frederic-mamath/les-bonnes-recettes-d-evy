@@ -1,13 +1,17 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
 
-import Layout from 'components/Layout'
+import Layout from "components/Layout";
 
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { ThemeProvider } from "@mui/material";
+import { muiTheme } from "styles/muiTheme";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  )
+    <ThemeProvider theme={muiTheme}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
+  );
 }

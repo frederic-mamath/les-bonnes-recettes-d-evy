@@ -2,6 +2,7 @@ import {
   AppBar,
   MenuItem,
   Select,
+  Stack,
   TextField,
   Toolbar,
   Typography,
@@ -19,23 +20,25 @@ const Layout = (props: Props) => {
   return (
     <div>
       <AppBar position="sticky">
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <Link href="/">
             <Typography variant="h1">Les bonnes recettes d&apos;evy</Typography>
           </Link>
-          <Select>
-            <MenuItem>France</MenuItem>
-            <MenuItem>Japonais</MenuItem>
-            <MenuItem>Chinois</MenuItem>
-            <MenuItem>Vietnamien</MenuItem>
-            <MenuItem>Italien</MenuItem>
-          </Select>
-          <Select>
-            <MenuItem>Entrée</MenuItem>
-            <MenuItem>Plat</MenuItem>
-            <MenuItem>Dessert</MenuItem>
-          </Select>
-          <TextField variant="outlined" />
+          <Stack direction="row" gap={2}>
+            <Select>
+              <MenuItem>France</MenuItem>
+              <MenuItem>Japonais</MenuItem>
+              <MenuItem>Chinois</MenuItem>
+              <MenuItem>Vietnamien</MenuItem>
+              <MenuItem>Italien</MenuItem>
+            </Select>
+            <Select>
+              <MenuItem>Entrée</MenuItem>
+              <MenuItem>Plat</MenuItem>
+              <MenuItem>Dessert</MenuItem>
+            </Select>
+            <TextField variant="outlined" />
+          </Stack>
         </Toolbar>
       </AppBar>
       <main>{children}</main>
