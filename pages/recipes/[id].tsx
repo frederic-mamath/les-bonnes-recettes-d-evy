@@ -1,61 +1,75 @@
-import  { useRouter } from "next/router"
+import { useRouter } from "next/router";
 
-import { Recipe } from 'models/Recipe'
+import { Recipe } from "models/Recipe";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { Duration } from "luxon";
 
 const recipes: Record<string, Recipe> = {
-    "894ea07e-e77b-4114-9767-9b772d380065": {
-        id: "894ea07e-e77b-4114-9767-9b772d380065",
-        name: "Oeufs de cent ans",
-    },
-    "61d80433-a26e-4964-a95b-20a7b489f5ec": {
-        id: "61d80433-a26e-4964-a95b-20a7b489f5ec",
-        name: "Zha Jiang Mian",
-    }
+  "894ea07e-e77b-4114-9767-9b772d380065": {
+    id: "894ea07e-e77b-4114-9767-9b772d380065",
+    name: "Oeufs de cent ans",
+    category: "starter",
+    ingredients: [],
+    instructions: [],
+    cookingDuration: Duration.fromMillis(1000 * 60 * 10),
+    restDuration: Duration.fromMillis(1000 * 60 * 10),
+    preparationDuration: Duration.fromMillis(1000 * 60),
+  },
+  "61d80433-a26e-4964-a95b-20a7b489f5ec": {
+    id: "61d80433-a26e-4964-a95b-20a7b489f5ec",
+    name: "Zha Jiang Mian",
+    category: "dish",
+    ingredients: [],
+    instructions: [],
+    cookingDuration: Duration.fromMillis(1000 * 60 * 60),
+    restDuration: Duration.fromMillis(1000 * 60 * 10),
+    preparationDuration: Duration.fromMillis(1000 * 60),
+  },
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-    const paths = Object.values(recipes).map((recipe: Recipe) => ({
-        params: { id: recipe.id },
-      }))
+  const paths = Object.values(recipes).map((recipe: Recipe) => ({
+    params: { id: recipe.id },
+  }));
 
-    return {
-        paths,
-        fallback: false,
-    }
-}
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 export const getStaticProps: GetStaticProps = (context) => {
-    const { params = {} } = context
+  const { params = {} } = context;
 
-    const {id: recipeId } = params
+  const { id: recipeId } = params;
 
-    if (!recipeId || typeof recipeId !== "string") return {
-        props: { recipe: undefined }
-    }
-
-    const recipe = recipes[recipeId]
-
+  if (!recipeId || typeof recipeId !== "string")
     return {
-        props: { recipe }
-    }
-}
+      props: { recipe: undefined },
+    };
+
+  const recipe = recipes[recipeId];
+
+  return {
+    props: { recipe },
+  };
+};
 
 interface Props {
-    recipe: Recipe
+  recipe: Recipe;
 }
 
 const RecipePage = (props: Props) => {
-    const {} = props
-    const router = useRouter()
-    const { id } = router.query
+  const { recipe } = props;
+  const router = useRouter();
+  const { id } = router.query;
 
-    return (
-        <div>
-            <h1>Recipe with id {id}</h1>
-            <h2>Name</h2>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h1>{recipe.name}</h1>
+      <h2>{recipe.category}</h2>
+    </div>
+  );
+};
 
 export default RecipePage;
