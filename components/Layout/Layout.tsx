@@ -25,14 +25,14 @@ const Layout = (props: Props) => {
             <Typography variant="h1">Les bonnes recettes d&apos;evy</Typography>
           </Link>
           <Stack direction="row" gap={2}>
-            <Select>
+            <Select placeholder="Type de cuisine">
               <MenuItem>France</MenuItem>
               <MenuItem>Japonais</MenuItem>
               <MenuItem>Chinois</MenuItem>
               <MenuItem>Vietnamien</MenuItem>
               <MenuItem>Italien</MenuItem>
             </Select>
-            <Select>
+            <Select placeholder="Catégorie">
               <MenuItem>Entrée</MenuItem>
               <MenuItem>Plat</MenuItem>
               <MenuItem>Dessert</MenuItem>
