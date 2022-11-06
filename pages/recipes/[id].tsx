@@ -7,12 +7,10 @@ const recipes: Record<string, Recipe> = {
     "894ea07e-e77b-4114-9767-9b772d380065": {
         id: "894ea07e-e77b-4114-9767-9b772d380065",
         name: "Oeufs de cent ans",
-        krap: "dsd"
     },
     "61d80433-a26e-4964-a95b-20a7b489f5ec": {
         id: "61d80433-a26e-4964-a95b-20a7b489f5ec",
         name: "Zha Jiang Mian",
-        krap: "dsd"
     }
 };
 
