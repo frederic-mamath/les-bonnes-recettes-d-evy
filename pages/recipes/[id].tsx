@@ -1,34 +1,9 @@
-import { useRouter } from "next/router";
-
 import { Recipe } from "models/Recipe";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Duration } from "luxon";
-
-const recipes: Record<string, Recipe> = {
-  "894ea07e-e77b-4114-9767-9b772d380065": {
-    id: "894ea07e-e77b-4114-9767-9b772d380065",
-    name: "Oeufs de cent ans",
-    category: "starter",
-    ingredients: [],
-    instructions: [],
-    cookingDuration: Duration.fromMillis(1000 * 60 * 10),
-    restDuration: Duration.fromMillis(1000 * 60 * 10),
-    preparationDuration: Duration.fromMillis(1000 * 60),
-  },
-  "61d80433-a26e-4964-a95b-20a7b489f5ec": {
-    id: "61d80433-a26e-4964-a95b-20a7b489f5ec",
-    name: "Zha Jiang Mian",
-    category: "dish",
-    ingredients: [],
-    instructions: [],
-    cookingDuration: Duration.fromMillis(1000 * 60 * 60),
-    restDuration: Duration.fromMillis(1000 * 60 * 10),
-    preparationDuration: Duration.fromMillis(1000 * 60),
-  },
-};
+import { MOCKED_RECIPES } from "mocks/recipes";
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = Object.values(recipes).map((recipe: Recipe) => ({
+  const paths = Object.values(MOCKED_RECIPES).map((recipe: Recipe) => ({
     params: { id: recipe.id },
   }));
 
@@ -48,7 +23,9 @@ export const getStaticProps: GetStaticProps = (context) => {
       props: { recipe: undefined },
     };
 
-  const recipe = recipes[recipeId];
+  const recipe = MOCKED_RECIPES[recipeId];
+
+  console.log({ recipe });
 
   return {
     props: { recipe },
@@ -61,8 +38,6 @@ interface Props {
 
 const RecipePage = (props: Props) => {
   const { recipe } = props;
-  const router = useRouter();
-  const { id } = router.query;
 
   return (
     <div>
