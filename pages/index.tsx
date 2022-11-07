@@ -6,7 +6,7 @@ const Home = () => {
   const recipes = Object.values(MOCKED_RECIPES);
 
   return (
-    <Stack direction="row" gap={4} p={4}>
+    <Stack direction="row" gap={4} p={4} flexWrap="wrap">
       {recipes.map((recipe) => (
         <RecipeCard
           key={recipe.id}
