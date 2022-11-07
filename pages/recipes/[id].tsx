@@ -47,7 +47,7 @@ const RecipePage = (props: Props) => {
 
   return (
     <Stack gap={4} p={3}>
-      <Stack direction="row">
+      <Stack direction="row" justifyContent="space-between">
         <Stack>
           <Typography variant="h2">{recipe.name}</Typography>
           <Stack direction="row" gap={2}>
