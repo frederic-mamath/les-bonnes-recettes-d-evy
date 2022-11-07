@@ -1,18 +1,24 @@
 import { createTheme } from "@mui/material";
 
 const fontSize = {
-  xxl: "42px",
-  xl: "34px",
+  xxl: "40px",
+  xl: "32px",
+  l: "24px",
+  m: "16px",
 };
 
 const colorPalette = {
   white: "#FFFFFF",
 };
 
+export const basicTheme = createTheme();
 export const muiTheme = createTheme({
   typography: {
     h1: {
       fontSize: fontSize.xxl,
+      [basicTheme.breakpoints.down("md")]: {
+        fontSize: fontSize.m,
+      },
     },
     h2: {
       fontSize: fontSize.xl,

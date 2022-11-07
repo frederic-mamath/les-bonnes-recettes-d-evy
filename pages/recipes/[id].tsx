@@ -47,7 +47,11 @@ const RecipePage = (props: Props) => {
 
   return (
     <Stack gap={4} p={3}>
-      <Stack direction="row" justifyContent="space-between">
+      <Stack
+        direction={{ sm: "row", xs: "column" }}
+        justifyContent="space-between"
+        gap={4}
+      >
         <Stack>
           <Typography variant="h2">{recipe.name}</Typography>
           <Stack direction="row" gap={2}>
@@ -75,7 +79,7 @@ const RecipePage = (props: Props) => {
           style={{ objectFit: "cover" }}
         />
       </Stack>
-      <Stack direction="row" gap={4}>
+      <Stack direction={{ sm: "row", xs: "column" }} gap={4}>
         <Card sx={{ p: 2 }}>
           <Typography variant="h3">Ingrédients</Typography>
           <List>
