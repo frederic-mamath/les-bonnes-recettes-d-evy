@@ -5,6 +5,10 @@ import { Card, List, ListItem, Stack, Typography } from "@mui/material";
 import { Duration } from "luxon";
 import Image from "next/image";
 import { toCamelCase } from "services/string";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import RecipeDuration from "components/RecipeDuration";
+import PauseIcon from "@mui/icons-material/Pause";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = Object.values(MOCKED_RECIPES).map((recipe: Recipe) => ({
@@ -29,8 +33,6 @@ export const getStaticProps: GetStaticProps = (context) => {
 
   const recipe = MOCKED_RECIPES[recipeId];
 
-  console.log({ recipe });
-
   return {
     props: { recipe },
   };
@@ -52,26 +54,18 @@ const RecipePage = (props: Props) => {
             <Typography variant="h3">{recipe.category}</Typography>
             <Typography variant="h3">{recipe.country}</Typography>
           </Stack>
-          <Stack direction="row">
-            {Duration.fromMillis(recipe.preparationDurationInMillis).toFormat(
-              "hh:mm"
-            )}
-          </Stack>
-          <Stack direction="row">
-            {Duration.fromMillis(recipe.restDurationInMillis).toFormat("hh:mm")}
-          </Stack>
-          <Stack direction="row">
-            {Duration.fromMillis(recipe.cookingDurationInMillis).toFormat(
-              "hh:mm"
-            )}
-          </Stack>
-          <Stack direction="row">
-            {Duration.fromMillis(
-              recipe.preparationDurationInMillis +
-                recipe.restDurationInMillis +
-                recipe.cookingDurationInMillis
-            ).toFormat("hh:mm")}
-          </Stack>
+          <RecipeDuration
+            Icon={<RestaurantIcon />}
+            durationInMillis={recipe.preparationDurationInMillis}
+          />
+          <RecipeDuration
+            Icon={<PauseIcon />}
+            durationInMillis={recipe.restDurationInMillis}
+          />
+          <RecipeDuration
+            Icon={<LocalFireDepartmentIcon />}
+            durationInMillis={recipe.cookingDurationInMillis}
+          />
         </Stack>
         <Image
           src={recipe.pictureUrl}
