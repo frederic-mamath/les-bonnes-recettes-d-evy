@@ -12,7 +12,8 @@ export interface Recipe {
     | "maghrebian"
     | "indochinese"
     | "french japanese"
-    | "american";
+    | "american"
+    | "japanese";
   servingCount: number;
   ingredients: string[];
   instructions: string[];
