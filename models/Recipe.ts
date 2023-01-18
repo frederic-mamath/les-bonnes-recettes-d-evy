@@ -13,7 +13,8 @@ export interface Recipe {
     | "indochinese"
     | "french japanese"
     | "american"
-    | "japanese";
+    | "japanese"
+    | "filipino";
   servingCount: number;
   ingredients: string[];
   instructions: string[];
