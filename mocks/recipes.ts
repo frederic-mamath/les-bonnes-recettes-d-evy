@@ -700,7 +700,7 @@ export const MOCKED_RECIPES: Record<string, Recipe> = {
     category: "dish",
     country: "chinese",
     servingCount: 10,
-    pictureUrl: "",
+    pictureUrl: "https://res.cloudinary.com/pokpok/image/upload/q_10/v1675288013/A8802283-B6BD-4506-81BD-DE03BA409A05_nyj587.jpg",
     ingredients: [
       "290g de farine",
       "6g de levure boulangere",
